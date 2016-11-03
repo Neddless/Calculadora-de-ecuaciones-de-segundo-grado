@@ -1,0 +1,34 @@
+// Calculadora de ecuaciones de segundo grado
+#include <iomanip>
+#include <iostream>
+#include <cmath>
+int main(int argc, char * argv[])
+ {
+   std::cout << std::fixed << std::setprecision(3);
+// Selecciona las variables correspondientes a ax^2 + bx + c = 0
+    float a, b, c;
+    std::cout << "Primer numero \n";
+    std::cin >> a;
+    std::cout << "Segundo numero \n";
+    std::cin >> b;
+    std::cout << "Tercer numero \n";
+    std::cin >> c;
+// Calculo de la raiz
+  float M = (b*b) - (4*a*c);
+    std::cout << "La raiz: " << M << std::endl;
+// Si la raiz es negativa termina to.
+  if (M < 0) {
+    std::cout << "La raiz es negativa, no tiene solucion \n";
+}
+  else {
+// Calcula el primer resultado
+  float negativa = (-b - sqrt(M))/(2*a);
+    std::cout << "Resultado 1:  " << negativa << std::endl;
+// Calcula el segundo resultado
+  float positiva = (-b + sqrt(M))/(2*a);
+    std::cout << "Resultado 2:  " << positiva << std::endl;
+
+}
+system("pause");
+  return 0;
+}
