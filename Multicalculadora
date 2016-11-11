@@ -1,0 +1,96 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <conio.h>
+const float PI = 3.1415926535897932384626433832795;
+
+int main (int argc, char * argv[]) {
+  std::cout << std::fixed << std::setprecision(3);
+int formula = 0;
+  // Seleccion de Formula
+
+do {
+std::cout << "\nQue operacion quieres hacer? \n 1-Ecuacion de segundo grado \n 2-Reactancia inductiva\n 3-Tiempo de subida estimado \n 4-Calculo de espesor de aislante\n\n";
+std::cin >> formula;
+
+switch (formula) {
+//---------------------------------------------------------------
+case 1: {
+      // Calculadora de ecuaciones de segundo grado
+// Selecciona las variables correspondientes a ax^2 + bx + c = 0
+    float input[3];
+    std::cout << "Primer numero \n";
+    std::cin >> input[0];
+    std::cout << "Segundo numero \n";
+    std::cin >> input[1];
+    std::cout << "Tercer numero \n";
+    std::cin >> input[2];
+// Calculo de la raiz
+float m = (input[1]*input[1]) - (4*input[0]*input[2]);
+// Si la raiz es negativa termina to.
+  if (m < 0) {
+    std::cout << "La raiz: " << m << std::endl;
+    std::cout << "La raiz es negativa, no tiene solucion \n";
+}
+  else {
+// Calcula los resultados
+  float negativa = (-input[1] - sqrt(m))/(2*input[0]);
+    std::cout << "La raiz: " << m << std::endl;
+    std::cout << "Resultado 1:  " << negativa << std::endl;
+  float positiva = (-input[1] + sqrt(m))/(2*input[0]);
+    std::cout << "Resultado 2:  " << positiva << std::endl;
+}
+}
+  break;
+//---------------------------------------------------------------
+  case 2: {
+    // Reactancia inductiva
+    float f, l;
+    std::cout << "多Frecuencia usada? (Hercios) \n";
+    std::cin >> f;
+    std::cout << "Ahora la inductancia (Henrios) \n";
+    std::cin >> l;
+    float xl = 2*PI*f*l;
+    std::cout << "Reactancia inductiva: " << xl << "Ohmios" << std::endl;
+}
+break;
+// Tiempo estimado de subida
+
+case 3: {
+  float v, p, s;
+  std::cout << "多Velocidad de subida actual? (Mbps) \n";
+  std::cin >> v;
+    float vp = (v*0.125);
+  std::cout << "Y cuanto pesa el video? (MB)  \n";
+  std::cin >> p;
+  std::cout << "Cuanto porcentaje lleva subido hasta ahora? \n";
+  std::cin >> s;
+  float sr = (100 - s)/100;
+  float t = ((p/vp)*sr)/60;
+  float vk = v*125;
+  std::cout << "Velocidad: " << vk << "KB/s" << std::endl;
+  std::cout << "Faltan: " << t << "Minutos" << std::endl;
+}
+break;
+
+ case 4: {
+float AtA, AtB, Q, l;
+std::cout << "Temperatura Alta\n";
+std::cin >> AtA;
+std::cout << "Temperatura Baja\n";
+std::cin >> AtB;
+std::cout << "Conductividad del material (W/m尊C)\n";
+std::cin >> l;
+std::cout << "Maxima perdida de energia(W/m2)\n";
+std::cin >> Q;
+float e = (((AtA-AtB)*l)/Q)*100;
+std::cout << "Espesor minimo: " << e << "cm\n\n";
+  }
+
+}
+}
+while((formula != 0)&&(formula<6));
+
+system ("Pause");
+
+}
